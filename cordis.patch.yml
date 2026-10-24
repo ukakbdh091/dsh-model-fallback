@@ -1,0 +1,10 @@
+# dsh-model-fallback 的默认装配。
+#
+# 这里只把插件挂上去，备用模型链默认是空的（空链 = 什么都不做）。
+# 真正的备用模型请在 profile 的 cordis.patch.yml 里覆盖，或写进
+# ~/.dsh/model-fallback.json（见 README）。
+- insert:
+    - id: model-fallback
+      name: dsh-model-fallback
+      config:
+        fallbacks: []
