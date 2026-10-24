@@ -19,21 +19,38 @@ DeepSeek Harness 插件。备用模型可以直接在 DSH 的设置里，从模�
 
 需要 DSH 的 desktop（或任意带 settings 服务的 profile）。
 
-**1. 拿到代码**
+### 一键安装（推荐）
+
+在 DSH 的插件市场 / 插件管理里，直接输入包名：
+
+```
+dsh-model-fallback
+```
+
+或者在终端里一条命令：
 
 ```bash
-git clone https://github.com/YOUR-NAME/dsh-model-fallback.git
+dsh plugin --profile desktop add dsh-model-fallback
 ```
 
-**2. 装进 profile**
+装完重启 Harness（或等 HMR 热重载），进 **设置 → 模型兜底** 选备用模型即可。
 
-```powershell
-dsh plugin --profile desktop add <克隆下来的目录>
+> 把 `desktop` 换成你实际用的 profile 名，比如 `web`。
+
+### 从源码安装
+
+```bash
+git clone https://github.com/ukakbdh091/dsh-model-fallback.git
+dsh plugin --profile desktop add ./dsh-model-fallback
 ```
 
-**3. 重启 Harness**
+### 验证装好了
 
-装完在桌面版里「重新启动 Harness」（或等 HMR 热重载），然后在 **设置 → 模型兜底** 里选备用模型。
+```bash
+dsh --profile desktop --dump-config | grep model-fallback
+```
+
+能看到 `id: model-fallback` 就说明挂上了。
 
 ## 配置
 
@@ -146,9 +163,8 @@ A DeepSeek Harness plugin: when the primary model stops responding, switch the c
 - Configure in **Settings → Model fallback** (model picker), in `~/.dsh/model-fallback.json`, or in the profile's `cordis.patch.yml`.
 
 ```bash
-git clone https://github.com/YOUR-NAME/dsh-model-fallback.git
-dsh plugin --profile desktop add ./dsh-model-fallback
-npm install && npm test
+# 一行装好
+dsh plugin --profile desktop add dsh-model-fallback
 ```
 
 MIT licensed.
