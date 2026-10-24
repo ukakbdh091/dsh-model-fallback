@@ -1,6 +1,6 @@
 {
   "name": "dsh-model-fallback",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "type": "module",
   "description": "模型报错时自动切到备用模型并在同一步重试，备用模型可在设置页从模型列表里选。",
   "main": "./lib/index.js",
